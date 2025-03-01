@@ -3,9 +3,9 @@ import requests
 
 app = Flask(__name__)
 
-@app.route('/api/hello')
+@app.route('/api/getTopMods')
 def hello(): 
-    return {'message': 'Hello from Python'}
+    return requests.get('https://api.modrinth.com/v2/search').json()
 
 if __name__ == '__main__':
     app.run()

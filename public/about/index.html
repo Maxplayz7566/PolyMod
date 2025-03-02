@@ -4,10 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poly Mod</title>
-    <script src="/tailwind.min.js"></script>
     <script src="/injectors.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/tailwind.min.js"></script>
 </head>
-<body class="bg-gray-100">
+<body>
+    <style>
+        .iframe-container {
+          position: fixed;
+          top: 60px; /* Adjust this to match your navbar height */
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: -1;
+          width: 100%;
+          height: calc(100vh - 60px); /* Subtract navbar height */
+        }
+      </style>
+      
+      <iframe class="iframe-container" src="https://maxplayz7566.github.io"></iframe>
 </body>
 </html>

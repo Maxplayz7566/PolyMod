@@ -7,76 +7,17 @@
     <script src="/tailwind.min.js"></script>
     <script src="/injectors.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <style>
-        .carousel-container {
-            overflow: hidden;
-            position: relative;
-            width: 75%;
-            margin: 0 auto;
-        }
-        .carousel-content {
-            display: flex;
-            transition: transform 0.1s linear;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gray-100">
     <center class="pt-10">
         <h1 class="text-5xl center">One place for all mods</h1>
-        <div class="carousel-container mt-8">
-            <div class="carousel-content p-4" id="carousel">
-                
-            </div>
+        <p class="center mt-2 text-xl"><span class="text-red-500" style="font-weight: bold; font-size: 1.25rem;">Stop</span> wasting time hunting mods everywhere! <span class="text-blue-500" style="font-weight: bold; font-size: 1.25rem;">Instead</span>, let us do the work and <span class="text-green-500" style="font-weight: bold; font-size: 1.25rem;">find them</span> for you, right here!</p>
+        <div class="mt-1 logos">
+            <div id="carousel" class="slide p-4 logos-slide"></div>
+            <div id="carousel2" class="slide p-4 logos-slide"></div>
         </div>
     </center>
-
-    <script>
-        cardTemplate = `<div class="flex-none w-64 bg-white rounded-lg shadow-md p-4 mx-3">
-                    <img src="%image" style="height: 64px" class="rounded-lg shadow-md">
-                    <h2 class="text-xl font-bold mt-2">%name</h2>
-                    <p class="text-gray-600">by %author</p>
-                </div>`
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const carousel = document.getElementById('carousel');
-            let cards = [];
-
-            fetch('/api/getTopMods').then((response) => {
-                if (response.ok) {
-                    return response.json()
-                }
-            }).then((json) => {
-                cards = json['hits']
-
-                let currentPosition = 0;
-
-            // Clone cards twice to ensure smooth transition
-            cards.forEach(card => {
-                carousel.innerHTML += cardTemplate.replace('%name', card.title).replace('%author', card.author).replace('%image', card.icon_url)
-            });
-
-            function moveCarousel() {
-                currentPosition -= 1;
-                carousel.style.transform = `translateX(${currentPosition}px)`;
-
-                // Reset position when half of the cards have scrolled
-                const firstCardWidth = cards[0].offsetWidth + 24; // width + margin
-                const resetPoint = firstCardWidth * cards.length;
-                
-                if (-currentPosition >= resetPoint) {
-                    currentPosition = -1; // Start from -1 to maintain continuous movement
-                    carousel.style.transition = 'none';
-                    carousel.style.transform = `translateX(${currentPosition}px)`;
-                    // Force reflow
-                    carousel.offsetHeight;
-                    carousel.style.transition = 'transform 0.1s linear';
-                }
-            }
-
-            // Start the carousel animation
-            setInterval(moveCarousel, 20);
-            })
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

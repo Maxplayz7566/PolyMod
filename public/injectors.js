@@ -27,13 +27,14 @@
                         </div>
                         
                         <div class="hidden md:flex space-x-8">
-                            <a href="/" class="text-gray-700 hover:text-indigo-600">Home</a>
-                            <a href="/mods" class="text-gray-700 hover:text-indigo-600">Mods</a>
-                            <a href="/about" class="text-gray-700 hover:text-indigo-600">About</a>
+                            <a href="/" class="text-gray-700 hover:text-blue-500">Home</a>
+                            <a href="/mods" class="text-gray-700 hover:text-blue-500">Mods</a>
+                            <a href="/about" class="text-gray-700 hover:text-blue-500">About Me</a>
                         </div>
                     </div>
                 </div>
             </nav>
+            <marquee class="bg-blue-500 text-white text-4xl">Version 1.0 is out! Report Bugs On Github</marquee>
         `;
         
         const body = document.querySelector('body');
